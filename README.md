@@ -6,7 +6,7 @@ Sistema de assinatura digital que permite fazer o upload de arquivos no formato 
 
 - **Usuário principal:** emissor — quem emite e assina documentos.
 - **Problema central:** documentos falsificados ou adulterados circulam e ninguém consegue verificar com facilidade.
-- **Tipo de assinatura:** a decidir — começar simples e evoluir.
+- **Tipo de assinatura:** eletrônica simples — hash SHA-256 do PDF original + QR code com URL de validação (decidido no refinamento do 0010).
 
 ## Product Backlog
 
@@ -14,7 +14,7 @@ O backlog é gerenciado com [pbl-skills](https://github.com/mariomelo/pbl-skills
 
 | # | Item | Status |
 |---|------|--------|
-| 0010 | [Assinar PDF com QR code](product-backlog/0010-assinar-pdf-qrcode/Card.md) | RAW |
+| 0010 | [Assinar PDF com QR code](product-backlog/0010-assinar-pdf-qrcode/Card.md) | READY — [conversa](product-backlog/0010-assinar-pdf-qrcode/Conversation.md) · [critérios de aceite](product-backlog/0010-assinar-pdf-qrcode/Confirmation.md) |
 | 0020 | [Validar assinatura via QR code](product-backlog/0020-validar-via-qrcode/Card.md) | RAW |
 | 0030 | [Detectar adulteração do PDF](product-backlog/0030-detectar-adulteracao-pdf/Card.md) | RAW |
 | 0040 | [Conta e login do emissor](product-backlog/0040-conta-login-emissor/Card.md) | RAW |
@@ -111,8 +111,10 @@ O incremento está pronto quando todos os itens abaixo forem verdadeiros. Fonte:
 
 ## Decisões em aberto
 
-- **Nível da assinatura** (Lei 14.063/2020): simples, avançada ou qualificada (ICP-Brasil). Candidata a ADR no refinamento do item 0010.
 - **QR code × adulteração:** o QR code prova que a assinatura existe, mas não que o PDF em mãos é o original. O item 0030 pode precisar subir de prioridade ou ser entregue junto com o 0020.
+- **Tamanho do 0010:** o item ficou grande após o refinamento; avaliar `/pbl-split` antes de implementar.
+- **Card do 0020:** reescrever — a página de validação já nasce no 0010; o 0020 cuida dos estados de validade.
+- **Download do PDF pela página pública** e **prazo de retenção** dos documentos.
 
 ## Fluxo de trabalho
 
