@@ -11,6 +11,7 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "test": "vitest run",
+    "test:ci": "vitest run --reporter=default --reporter=json --outputFile.json=test-results.json",
     "test:watch": "vitest"
   },
   "dependencies": {
