@@ -147,3 +147,24 @@ Depois de qualquer mudança no backlog, regenere o índice:
 ```
 node scripts/pbl-index.js
 ```
+
+## Princípio ágil e IA
+
+> "Entregar frequentemente software funcionando, com preferência à menor escala de tempo."
+> — Manifesto Ágil
+
+Em 2001, "frequente" queria dizer de semanas a meses. Hoje o ciclo pode ser de horas.
+
+### Como a IA ajuda nesse princípio
+
+- **Do requisito ao código mais rápido:** a história de usuário vira esqueleto de implementação, testes e migrations em minutos. O que antes levava uma sprint pode virar um PR no mesmo dia.
+- **Ciclo de validação mais curto:** com protótipos funcionais gerados rápido, o cliente reage a software rodando, não a uma especificação. É o espírito original do princípio levado ao extremo.
+- **Mais apoio no pipeline:** testes gerados, review automatizado e investigação de falha de CI aceleram o caminho até produção.
+
+### O risco
+
+A IA acelera a produção de código, não a entrega de valor. Se o gargalo estiver em descoberta de produto, aprovação ou deploy manual, a IA só aumenta o estoque de trabalho parado. O princípio fala em software funcionando, não em software gerado.
+
+### O que continua sendo humano
+
+Decidir o que tem valor, priorizar e validar com o cliente. A IA reduz o tempo de entrega, mas quem garante que a entrega importa é o time.
