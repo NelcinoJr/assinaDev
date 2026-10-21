@@ -1,5 +1,7 @@
 # assinaDev
 
+[![CI](https://github.com/NelcinoJr/assinaDev/actions/workflows/ci.yml/badge.svg)](https://github.com/NelcinoJr/assinaDev/actions/workflows/ci.yml)
+
 Sistema de assinatura digital que permite fazer o upload de arquivos no formato `.pdf` e possibilita a validação via QR code para identificar se é uma assinatura válida.
 
 ## Produto
