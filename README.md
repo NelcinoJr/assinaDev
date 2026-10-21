@@ -1,0 +1,104 @@
+# assinaDev
+
+Sistema de assinatura digital que permite fazer o upload de arquivos no formato `.pdf` e possibilita a validação via QR code para identificar se é uma assinatura válida.
+
+## Produto
+
+- **Usuário principal:** emissor — quem emite e assina documentos.
+- **Problema central:** documentos falsificados ou adulterados circulam e ninguém consegue verificar com facilidade.
+- **Tipo de assinatura:** a decidir — começar simples e evoluir.
+
+## Product Backlog
+
+O backlog é gerenciado com [pbl-skills](https://github.com/mariomelo/pbl-skills) e vive em [`product-backlog/`](product-backlog/). Cada item passa pelo pipeline dos 3 Cs: `Card.md` (raw) → `Conversation.md` (refined) → `Confirmation.md` (ready).
+
+| # | Item | Status |
+|---|------|--------|
+| 0010 | [Assinar PDF com QR code](product-backlog/0010-assinar-pdf-qrcode/Card.md) | RAW |
+| 0020 | [Validar assinatura via QR code](product-backlog/0020-validar-via-qrcode/Card.md) | RAW |
+| 0030 | [Detectar adulteração do PDF](product-backlog/0030-detectar-adulteracao-pdf/Card.md) | RAW |
+| 0040 | [Conta e login do emissor](product-backlog/0040-conta-login-emissor/Card.md) | RAW |
+| 0050 | [Listar documentos assinados](product-backlog/0050-listar-documentos-assinados/Card.md) | RAW |
+| 0060 | [Revogar assinatura](product-backlog/0060-revogar-assinatura/Card.md) | RAW |
+| 0070 | [Histórico e trilha de auditoria](product-backlog/0070-historico-auditoria/Card.md) | RAW |
+| 0080 | [Múltiplos signatários](product-backlog/0080-multiplos-signatarios/Card.md) | RAW |
+
+### 0010 — Assinar PDF com QR code
+
+Como emissor,
+quero fazer upload de um PDF e assiná-lo,
+para que eu receba uma versão assinada com QR code para distribuir.
+
+### 0020 — Validar assinatura via QR code
+
+Como pessoa que recebeu o documento,
+quero escanear o QR code e ver se a assinatura é válida,
+para que eu saiba se o documento é autêntico.
+
+### 0030 — Detectar adulteração do PDF
+
+Como pessoa que recebeu o documento,
+quero enviar o PDF que tenho em mãos e conferir se ele é idêntico ao original assinado,
+para que eu detecte adulteração, mesmo quando o QR code foi copiado para um documento falso.
+
+### 0040 — Conta e login do emissor
+
+Como emissor,
+quero criar uma conta e entrar com login seguro,
+para que somente eu consiga assinar documentos em meu nome.
+
+### 0050 — Listar documentos assinados
+
+Como emissor,
+quero ver a lista de documentos que assinei,
+para que eu acompanhe e baixe novamente quando precisar.
+
+### 0060 — Revogar assinatura
+
+Como emissor,
+quero revogar a assinatura de um documento,
+para que ele passe a aparecer como inválido na validação.
+
+### 0070 — Histórico e trilha de auditoria
+
+Como emissor,
+quero ver o histórico de cada documento (quem assinou, quando e quantas validações teve),
+para que eu tenha prova em caso de contestação.
+
+### 0080 — Múltiplos signatários
+
+Como emissor,
+quero convidar outras pessoas para assinar o mesmo documento,
+para que contratos com várias partes sejam assinados na plataforma.
+
+## Definition of Done
+
+O incremento está pronto quando:
+
+- [ ] Todos os critérios de aceite do `Confirmation.md` foram atendidos
+- [ ] Os testes passam
+- [ ] Não há defeitos conhecidos
+- [ ] A funcionalidade pode ser demonstrada para os stakeholders
+- [ ] O incremento está publicado no ambiente de homologação (staging)
+
+## Decisões em aberto
+
+- **Nível da assinatura** (Lei 14.063/2020): simples, avançada ou qualificada (ICP-Brasil). Candidata a ADR no refinamento do item 0010.
+- **QR code × adulteração:** o QR code prova que a assinatura existe, mas não que o PDF em mãos é o original. O item 0030 pode precisar subir de prioridade ou ser entregue junto com o 0020.
+
+## Fluxo de trabalho
+
+Skills disponíveis em `.cursor/skills/`:
+
+- `/pbl-refine` — refinar o item do topo (3 Cs)
+- `/pbl-add` — adicionar um novo item
+- `/pbl-split` — dividir um item grande (Método Hambúrguer)
+- `/pbl-implement` — passar de um item refinado para código
+- `/pbl-diagnose` — analisar a saúde do backlog
+- `/pbl-done` — marcar um item como concluído
+
+Depois de qualquer mudança no backlog, regenere o índice:
+
+```
+node scripts/pbl-index.js
+```
