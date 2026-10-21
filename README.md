@@ -8,6 +8,26 @@ Sistema de assinatura digital que permite fazer o upload de arquivos no formato 
 - **Problema central:** documentos falsificados ou adulterados circulam e ninguém consegue verificar com facilidade.
 - **Tipo de assinatura:** eletrônica simples — hash SHA-256 do PDF original + QR code com URL de validação (decidido no refinamento de "Assinar PDF com QR code", hoje 0030).
 
+## Como rodar
+
+Requisitos: Node.js 20 ou superior.
+
+```
+npm install
+npm run dev      # http://localhost:3000, recarrega ao salvar
+npm test         # testes de aceite (Vitest + Supertest)
+```
+
+Stack: Node.js, Express 5, EJS, Tailwind CSS 4 + DaisyUI 5 (via CDN), SQLite (`better-sqlite3`) e `bcryptjs`. O banco fica em `data/assinadev.db` (fora do git).
+
+Variáveis de ambiente:
+
+| Variável | Uso |
+|---|---|
+| `SESSION_SECRET` | Segredo da sessão. Obrigatório em produção; em desenvolvimento é gerado a cada inicialização. |
+| `NODE_ENV` | `production` ativa o cookie `Secure` (exige HTTPS). |
+| `PORT` | Porta HTTP (padrão `3000`). |
+
 ## Product Backlog
 
 O backlog é gerenciado com [pbl-skills](https://github.com/mariomelo/pbl-skills) e vive em [`product-backlog/`](product-backlog/). Cada item passa pelo pipeline dos 3 Cs: `Card.md` (raw) → `Conversation.md` (refined) → `Confirmation.md` (ready).

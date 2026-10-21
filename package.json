@@ -1,0 +1,27 @@
+{
+  "name": "assinadev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Assinatura digital de PDFs com validação via QR code",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.1",
+    "vitest": "^5.0.5"
+  }
+}

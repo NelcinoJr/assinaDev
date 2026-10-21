@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="corporate">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> · assinaDev</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-primary/10 flex flex-col">
+  <header class="navbar gap-4 bg-base-100/80 backdrop-blur border-b border-base-300 px-4 sm:px-8">
+    <div class="flex-1 shrink-0">
+      <a href="/" class="flex items-center gap-2 text-lg font-bold whitespace-nowrap">
+        <span class="inline-flex size-9 items-center justify-center rounded-xl bg-primary text-primary-content">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+          </svg>
+        </span>
+        <span>assina<span class="text-primary">Dev</span></span>
+      </a>
+    </div>
+    <% if (currentUser) { %>
+      <div class="flex min-w-0 items-center gap-3">
+        <span class="min-w-0 max-w-28 sm:max-w-xs truncate text-sm text-base-content/70" title="<%= currentUser.email %>" data-testid="current-user-email"><%= currentUser.email %></span>
+        <form method="post" action="/logout">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-sm btn-outline">Sair</button>
+        </form>
+      </div>
+    <% } %>
+  </header>
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8">

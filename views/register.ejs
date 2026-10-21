@@ -1,0 +1,32 @@
+<%- include("partials/head") %>
+<div class="card w-full max-w-md bg-base-100 shadow-xl">
+  <div class="card-body gap-4">
+    <div>
+      <h1 class="text-2xl font-bold">Criar conta</h1>
+      <p class="text-sm text-base-content/70">Cadastre-se para assinar seus documentos PDF.</p>
+    </div>
+
+    <form method="post" action="/register" class="flex flex-col gap-3" novalidate>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">E-mail</legend>
+        <input type="email" name="email" value="<%= values.email ?? '' %>" autocomplete="email" required
+               class="input w-full <%= errors.email ? 'input-error' : '' %>" placeholder="voce@empresa.com">
+        <% if (errors.email) { %><p class="label text-error"><%= errors.email %></p><% } %>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Senha</legend>
+        <input type="password" name="password" autocomplete="new-password" required minlength="8"
+               class="input w-full <%= errors.password ? 'input-error' : '' %>" placeholder="Mínimo de 8 caracteres">
+        <% if (errors.password) { %><p class="label text-error"><%= errors.password %></p><% } %>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary w-full mt-2">Criar conta</button>
+    </form>
+
+    <p class="text-center text-sm">Já tem conta? <a href="/login" class="link link-primary">Entrar</a></p>
+  </div>
+</div>
+<%- include("partials/foot") %>
