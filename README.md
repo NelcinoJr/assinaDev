@@ -14,7 +14,7 @@ O backlog é gerenciado com [pbl-skills](https://github.com/mariomelo/pbl-skills
 
 | # | Item | Status |
 |---|------|--------|
-| 0010 | [Conta e login do emissor](product-backlog/0010-conta-login-emissor/Card.md) | RAW |
+| 0010 | [Conta e login do emissor](product-backlog/0010-conta-login-emissor/Card.md) | READY — [conversa](product-backlog/0010-conta-login-emissor/Conversation.md) · [critérios de aceite](product-backlog/0010-conta-login-emissor/Confirmation.md) |
 | 0020 | [Histórico e trilha de auditoria](product-backlog/0020-historico-auditoria/Card.md) | RAW |
 | 0030 | [Assinar PDF com QR code](product-backlog/0030-assinar-pdf-qrcode/Card.md) | READY — [conversa](product-backlog/0030-assinar-pdf-qrcode/Conversation.md) · [critérios de aceite](product-backlog/0030-assinar-pdf-qrcode/Confirmation.md) |
 | 0040 | [Validar assinatura via QR code](product-backlog/0040-validar-via-qrcode/Card.md) | RAW |
@@ -103,6 +103,8 @@ O incremento está pronto quando todos os itens abaixo forem verdadeiros. Fonte:
 - **Tamanho do 0030:** o item ficou grande após o refinamento; avaliar `/pbl-split` antes de implementar.
 - **Card do 0040:** reescrever — a página de validação já nasce no 0030; o 0040 cuida dos estados de validade.
 - **Login antes da assinatura:** o 0030 foi refinado com emissor sem conta (nome + e-mail confirmado). Com o login no 0010, rever essa identificação.
+- **"Assinado por" sem nome:** o cadastro do 0010 pede só e-mail e senha; decidir no 0030 o que a página pública mostra sem expor o e-mail.
+- **Riscos assumidos no 0010:** sem confirmação de e-mail (alguém pode se cadastrar com o e-mail de outra pessoa), sem proteção contra força bruta e sem recuperação de senha. Rever antes de produção.
 - **Guardar o PDF:** o motivo era o download pela listagem, que foi removida. Rever se basta guardar o hash.
 - **Histórico (0020) antes de existir assinatura:** avaliar se ele deve vir depois do 0030.
 - **Download do PDF pela página pública** e **prazo de retenção** dos documentos.
