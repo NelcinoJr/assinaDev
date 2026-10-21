@@ -6,7 +6,7 @@ Sistema de assinatura digital que permite fazer o upload de arquivos no formato 
 
 - **Usuário principal:** emissor — quem emite e assina documentos.
 - **Problema central:** documentos falsificados ou adulterados circulam e ninguém consegue verificar com facilidade.
-- **Tipo de assinatura:** eletrônica simples — hash SHA-256 do PDF original + QR code com URL de validação (decidido no refinamento do 0010).
+- **Tipo de assinatura:** eletrônica simples — hash SHA-256 do PDF original + QR code com URL de validação (decidido no refinamento de "Assinar PDF com QR code", hoje 0030).
 
 ## Product Backlog
 
@@ -14,62 +14,50 @@ O backlog é gerenciado com [pbl-skills](https://github.com/mariomelo/pbl-skills
 
 | # | Item | Status |
 |---|------|--------|
-| 0010 | [Assinar PDF com QR code](product-backlog/0010-assinar-pdf-qrcode/Card.md) | READY — [conversa](product-backlog/0010-assinar-pdf-qrcode/Conversation.md) · [critérios de aceite](product-backlog/0010-assinar-pdf-qrcode/Confirmation.md) |
-| 0020 | [Validar assinatura via QR code](product-backlog/0020-validar-via-qrcode/Card.md) | RAW |
-| 0030 | [Detectar adulteração do PDF](product-backlog/0030-detectar-adulteracao-pdf/Card.md) | RAW |
-| 0040 | [Conta e login do emissor](product-backlog/0040-conta-login-emissor/Card.md) | RAW |
-| 0050 | [Listar documentos assinados](product-backlog/0050-listar-documentos-assinados/Card.md) | RAW |
+| 0010 | [Conta e login do emissor](product-backlog/0010-conta-login-emissor/Card.md) | RAW |
+| 0020 | [Histórico e trilha de auditoria](product-backlog/0020-historico-auditoria/Card.md) | RAW |
+| 0030 | [Assinar PDF com QR code](product-backlog/0030-assinar-pdf-qrcode/Card.md) | READY — [conversa](product-backlog/0030-assinar-pdf-qrcode/Conversation.md) · [critérios de aceite](product-backlog/0030-assinar-pdf-qrcode/Confirmation.md) |
+| 0040 | [Validar assinatura via QR code](product-backlog/0040-validar-via-qrcode/Card.md) | RAW |
+| 0050 | [Detectar adulteração do PDF](product-backlog/0050-detectar-adulteracao-pdf/Card.md) | RAW |
 | 0060 | [Revogar assinatura](product-backlog/0060-revogar-assinatura/Card.md) | RAW |
-| 0070 | [Histórico e trilha de auditoria](product-backlog/0070-historico-auditoria/Card.md) | RAW |
-| 0080 | [Múltiplos signatários](product-backlog/0080-multiplos-signatarios/Card.md) | RAW |
 
-### 0010 — Assinar PDF com QR code
+Itens removidos (em [`product-backlog/.removed-items/`](product-backlog/.removed-items/), podem ser restaurados): Listar documentos assinados, Múltiplos signatários.
 
-Como emissor,
-quero fazer upload de um PDF e assiná-lo,
-para que eu receba uma versão assinada com QR code para distribuir.
-
-### 0020 — Validar assinatura via QR code
-
-Como pessoa que recebeu o documento,
-quero escanear o QR code e ver se a assinatura é válida,
-para que eu saiba se o documento é autêntico.
-
-### 0030 — Detectar adulteração do PDF
-
-Como pessoa que recebeu o documento,
-quero enviar o PDF que tenho em mãos e conferir se ele é idêntico ao original assinado,
-para que eu detecte adulteração, mesmo quando o QR code foi copiado para um documento falso.
-
-### 0040 — Conta e login do emissor
+### 0010 — Conta e login do emissor
 
 Como emissor,
 quero criar uma conta e entrar com login seguro,
 para que somente eu consiga assinar documentos em meu nome.
 
-### 0050 — Listar documentos assinados
+### 0020 — Histórico e trilha de auditoria
 
 Como emissor,
-quero ver a lista de documentos que assinei,
-para que eu acompanhe e baixe novamente quando precisar.
+quero ver o histórico de cada documento (quem assinou, quando e quantas validações teve),
+para que eu tenha prova em caso de contestação.
+
+### 0030 — Assinar PDF com QR code
+
+Como emissor,
+quero fazer upload de um PDF e assiná-lo,
+para que eu receba uma versão assinada com QR code para distribuir.
+
+### 0040 — Validar assinatura via QR code
+
+Como pessoa que recebeu o documento,
+quero escanear o QR code e ver se a assinatura é válida,
+para que eu saiba se o documento é autêntico.
+
+### 0050 — Detectar adulteração do PDF
+
+Como pessoa que recebeu o documento,
+quero enviar o PDF que tenho em mãos e conferir se ele é idêntico ao original assinado,
+para que eu detecte adulteração, mesmo quando o QR code foi copiado para um documento falso.
 
 ### 0060 — Revogar assinatura
 
 Como emissor,
 quero revogar a assinatura de um documento,
 para que ele passe a aparecer como inválido na validação.
-
-### 0070 — Histórico e trilha de auditoria
-
-Como emissor,
-quero ver o histórico de cada documento (quem assinou, quando e quantas validações teve),
-para que eu tenha prova em caso de contestação.
-
-### 0080 — Múltiplos signatários
-
-Como emissor,
-quero convidar outras pessoas para assinar o mesmo documento,
-para que contratos com várias partes sejam assinados na plataforma.
 
 ## Definition of Done
 
@@ -111,9 +99,12 @@ O incremento está pronto quando todos os itens abaixo forem verdadeiros. Fonte:
 
 ## Decisões em aberto
 
-- **QR code × adulteração:** o QR code prova que a assinatura existe, mas não que o PDF em mãos é o original. O item 0030 pode precisar subir de prioridade ou ser entregue junto com o 0020.
-- **Tamanho do 0010:** o item ficou grande após o refinamento; avaliar `/pbl-split` antes de implementar.
-- **Card do 0020:** reescrever — a página de validação já nasce no 0010; o 0020 cuida dos estados de validade.
+- **QR code × adulteração:** o QR code prova que a assinatura existe, mas não que o PDF em mãos é o original. O item 0050 pode precisar ser entregue junto com o 0040.
+- **Tamanho do 0030:** o item ficou grande após o refinamento; avaliar `/pbl-split` antes de implementar.
+- **Card do 0040:** reescrever — a página de validação já nasce no 0030; o 0040 cuida dos estados de validade.
+- **Login antes da assinatura:** o 0030 foi refinado com emissor sem conta (nome + e-mail confirmado). Com o login no 0010, rever essa identificação.
+- **Guardar o PDF:** o motivo era o download pela listagem, que foi removida. Rever se basta guardar o hash.
+- **Histórico (0020) antes de existir assinatura:** avaliar se ele deve vir depois do 0030.
 - **Download do PDF pela página pública** e **prazo de retenção** dos documentos.
 
 ## Fluxo de trabalho
