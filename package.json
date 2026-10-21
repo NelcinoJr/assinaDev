@@ -5,7 +5,7 @@
   "description": "Assinatura digital de PDFs com validação via QR code",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12"
   },
   "scripts": {
     "start": "node src/server.js",

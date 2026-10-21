@@ -12,7 +12,7 @@ Sistema de assinatura digital que permite fazer o upload de arquivos no formato 
 
 ## Como rodar
 
-Requisitos: Node.js 20 ou superior.
+Requisitos: Node.js 22.12 ou superior.
 
 ```
 npm install
